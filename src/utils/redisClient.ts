@@ -3,14 +3,16 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+// const client = redis.createClient({
+//   socket: {
+//     host: process.env.REDIS_HOST || 'localhost',
+//     port: Number(process.env.REDIS_PORT) || 6379,
+//     connectTimeout: 10000 
+//   }
+// });
 const client = redis.createClient({
-  socket: {
-    host: process.env.REDIS_HOST || 'localhost',
-    port: Number(process.env.REDIS_PORT) || 6379,
-    connectTimeout: 10000 
-  }
+  url: process.env.REDIS_URL
 });
-
 let isConnected = false;
 
 async function connectRedis() {
